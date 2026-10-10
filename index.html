@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' blob: data:; media-src 'self' blob:; connect-src 'self' https: wss:; worker-src 'self' blob:; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>BenZica AI Camera</title>
+</head>
+<body>
+  <header><div class="brand">B</div><div><h1>BenZica AI Camera</h1><p>Your camera. Your creative look.</p></div><span class="tag">WINDOWS 11 ALPHA</span></header>
+  <main>
+    <aside>
+      <h2>Studio controls</h2>
+      <label for="key">Decart API key</label>
+      <input id="key" type="password" autocomplete="off" placeholder="Enter locally on your laptop">
+      <button id="saveKey" class="secondary">Use key for this session</button>
+      <p class="hint" id="keyStatus">Kept in memory; cleared when the app closes.</p>
+      <label for="camera">Camera</label><select id="camera"><option value="">Default webcam</option></select>
+      <button id="preview" class="secondary">Open local camera</button>
+      <label for="mode">Look</label>
+      <select id="mode"><option value="light">Soft studio lighting</option><option value="character">Reference character</option><option value="outfit">Reference outfit</option><option value="custom">Custom appearance</option></select>
+      <label for="photo">Reference photo</label><input id="photo" type="file" accept="image/png,image/jpeg,image/webp">
+      <div class="reference"><img id="thumb" hidden alt="Selected reference"><p id="photoStatus">Use your own photo or one you have permission to use.</p></div>
+      <label for="prompt">Describe your look</label><textarea id="prompt" rows="4" maxlength="2000">Give the person soft, balanced studio lighting and natural skin texture.</textarea>
+      <p class="hint">Starting AI sends your camera and selected reference to Decart and may use paid credits.</p>
+      <button id="start">Start AI preview</button><button id="apply" class="secondary" disabled>Apply changes</button>
+      <button id="stop" class="stop" disabled>Stop camera and AI</button>
+    </aside>
+    <section>
+      <div class="statusbar"><span id="status" role="status" aria-live="polite">Ready to open your camera</span><span id="timer">00:00</span></div>
+      <article><div class="panelhead"><h2>AI preview</h2><span class="tag">AI TRANSFORMED</span></div><div class="screen"><video id="output" autoplay playsinline muted></video><div id="empty">Your transformed video will appear here</div></div></article>
+      <div class="bottom"><article><h2>Original camera</h2><video id="input" autoplay playsinline muted></video></article>
+      <article class="connection"><h2>WhatsApp camera</h2><span id="nativeStatus" class="pending">Checking native component…</span><p>Start AI, then enable the virtual camera. Select it in WhatsApp’s camera options. Compatibility needs testing.</p><button id="virtual" disabled>Enable virtual camera</button><p id="system" class="hint"></p></article></div>
+      <p id="error" role="alert"></p>
+    </section>
+  </main>
+  <script type="module" src="/src/main.js"></script>
+</body></html>
